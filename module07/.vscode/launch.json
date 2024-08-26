@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "module07_c69780ab"
+        },
+        {
+            "type": "java",
             "name": "PlayGround",
             "request": "launch",
             "mainClass": "PlayGround",

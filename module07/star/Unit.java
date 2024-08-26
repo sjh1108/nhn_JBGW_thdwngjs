@@ -9,10 +9,10 @@ public class Unit {
         this.attackPower = attackPower;
     }
 
-    public void attack(Unit unit){
-        System.out.println(this.name + " is attack to " + unit.getName());
-        unit.setHp(unit.getHp() - this.attackPower);
-    }
+    // public void attack(Unit unit){
+    //     System.out.println(this.name + " is attack to " + unit.getName());
+    //     unit.setHp(unit.getHp() - this.attackPower);
+    // }
 
     public String getName(){
         return this.name;
