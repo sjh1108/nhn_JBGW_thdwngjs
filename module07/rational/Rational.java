@@ -24,6 +24,8 @@ public class Rational{
     }
 
     public Rational subtract(Rational r){
+        int numerator, denominator;
+
         numerator = (this.numerator * r.getDenominator()) - (this.denominator * r.getNumerator());
         denominator = this.denominator * r.getDenominator();
 
@@ -32,6 +34,8 @@ public class Rational{
     }
 
     public Rational times(Rational r){
+        int numerator, denominator;
+
         numerator = this.numerator * r.getNumerator();
         denominator = this.denominator * r.getDenominator();
 
@@ -74,6 +78,9 @@ public class Rational{
     }
 
     public String toString(){
+        if(this.denominator == 1){
+            return this.numerator + "";
+        }
         return this.numerator + "/" + this.denominator;
     }
 }
