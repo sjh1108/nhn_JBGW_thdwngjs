@@ -25,14 +25,13 @@ public class Student{
 
 class Test{
     public static void main(String[] args){
-        Student s1 = new Student();
-        s1.setinfo(1, "Celine");
+        String s = "5";
+        Object o = s;
+        if(o instanceof Student){
+            Student student = (Student) o;
+            System.out.println(student);
+        }
 
-        Student s2;
-        try{
-            s2 = (Student)s1.clone();
-            System.out.println(s1.equals(s2));
-        } catch(Exception e){}
-
+        System.out.println();
     }
 }

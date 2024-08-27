@@ -29,8 +29,25 @@ public class Utilities {
     //
     // To-do: add isCharSequence method here.
     // 
+    public static boolean isCharSequence(Object object){
+        if(object instanceof CharSequence){
+            return true;
+        } else{
+            return false;
+        }
+    }
 
     //
     // To-do add display method here.
     //
+
+    public static void display(Object item){
+        IPrintable printable;
+        if(item instanceof IPrintable){
+            printable = (IPrintable)item;
+            printable.print();
+        } else{
+            System.out.println(item.toString());
+        }
+    }
 }
