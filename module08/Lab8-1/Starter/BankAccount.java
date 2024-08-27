@@ -48,6 +48,11 @@ public class BankAccount {
     //
     // To-do: Add transferFrom method here..
     //
+    public void transferFrom(BankAccount accFrom, BigDecimal amount){
+        if(accFrom.withDraw(amount)){
+            this.deposit(amount);
+        }
+    }
 }
 
 class CreateAccount {
