@@ -1,3 +1,4 @@
+package Starcraft;
 public class Firebat extends Unit implements Attackable{
 
     public Firebat(String name, int hp){

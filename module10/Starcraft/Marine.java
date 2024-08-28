@@ -1,3 +1,4 @@
+package Starcraft;
 public class Marine extends Unit implements Attackable{
     public Marine(String name, int hp){
         super(name, hp);

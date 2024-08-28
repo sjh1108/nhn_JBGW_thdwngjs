@@ -1,3 +1,5 @@
+package End;
+
 public class Singleton{
     private static Singleton singleton;
     private Singleton(){}

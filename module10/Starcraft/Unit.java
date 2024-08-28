@@ -1,3 +1,4 @@
+package Starcraft;
 public class Unit {
     protected String name;
     protected int hp;

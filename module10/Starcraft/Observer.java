@@ -1,3 +1,4 @@
+package Starcraft;
 public class Observer extends Unit{
     public Observer(String name, int hp){
         super(name, hp);

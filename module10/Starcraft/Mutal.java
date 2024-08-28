@@ -1,3 +1,4 @@
+package Starcraft;
 public class Mutal extends Unit implements Attackable{
     public Mutal(String name, int hp){
         super(name, hp);
