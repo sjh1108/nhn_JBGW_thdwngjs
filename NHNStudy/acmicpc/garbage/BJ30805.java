@@ -1,4 +1,3 @@
-package garbage;
 import java.io.*;
 import java.util.*;
 
