@@ -28,7 +28,9 @@ class Test{
         };
 
         BinaryOp binder2 = (x, y) -> x + y;
+        
         System.out.println(calc(binder, 1, 2));
         System.out.println(calc(binder2, 1, 2));
+        System.out.println(calc((x, y) -> x + y, 1, 2));
     }
 }
