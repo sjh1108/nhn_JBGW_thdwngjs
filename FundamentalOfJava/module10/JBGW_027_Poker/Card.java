@@ -1,30 +1,21 @@
-import java.util.Random;
-
 public class Card {
-    int n;
-    int shape;
-    private static boolean[][] isUsed;
-    private static Random r;
+    private int no;
+    private String suit;
+    private String displayNo;
 
-    public Card(){
-        if(isUsed == null){
-            isUsed = new boolean[4][13];
-        }
-        if(r == null){
-            r = new Random();
-        }
-
-        do{
-            this.shape = r.nextInt(4);
-            this.n = r.nextInt(13);
-        }while(!checkUsed(this.shape, this.n));
+    public Card(int no, String suit, String displayNo){
+        this.no = no;
+        this.suit = suit;
+        this.displayNo = displayNo;
     }
 
-    private boolean checkUsed(int shape, int n){
-        if(isUsed[shape][n]){
-            return false;
-        } else{
-            return true;
-        }
+    public int getNo(){
+        return this.no;
+    }
+    public String getSuit(){
+        return this.suit;
+    }
+    public String getDisplayNo(){
+        return this.displayNo;
     }
 }
