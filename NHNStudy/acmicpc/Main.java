@@ -7,76 +7,63 @@ public class Main{
     static StringBuilder sb = new StringBuilder();
 
     static int N, M, K;
-    static int[][] map;
-
-    static void endPrint(){
-        if(isEnd()){
-            printMap();
-            System.exit(0);
+    
+    static class Point{
+        long x, y;
+        Point(long x, long y){
+            this.x = x;
+            this.y = y;
         }
-    }
-    static boolean isEnd(){
-        return K == 0;
-    }
-
-    static void backTracking(int idx){
-        endPrint();
-
-        int x = (idx-1)/9 + 1;
-        int y = (idx-1)%9 + 1;
-
-        if(map[x][y] != 0){
-            backTracking(idx+1);
-        }else{
-            for(int i = 1; i < 10; i++){
-                if(isPossible(x, y, i)){
-                    map[x][y] = i;
-                    K--;
-                    backTracking(idx+1);
-                    map[x][y] = 0;
-                    K++;
-                }
-            }
-        }
-    }
-
-    static boolean isPossible(int x, int y, int k){
-        for(int i = 1; i < 10; i++){
-            if(map[x][i] == k || map[i][y] == k){
-                return false;
-            }
-
-            int nx = (x-1)/3*3 + 1 + (i-1)/3;
-            int ny = (y-1)/3*3 + 1 + (i-1)%3;
-            if(map[nx][ny] == k && !(nx == x && ny == y)) return false;
-        }
-
-        return true;
-    }
-    static void printMap(){
-        for(int i = 1; i < 10; i++){
-            for(int j = 1; j < 10; j++){
-                sb.append(map[i][j]);
-            }
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
     }
 
     public static void main(String[] args) throws IOException{
-        map = new int[10][10];
-        K = 0;
+        Point[] arr = new Point[4];
 
-        for(int i = 1; i < 10; i++){
-            String s = br.readLine();
-            for(int j = 1; j < 10; j++){
-                map[i][j] = (int)(s.charAt(j-1) - '0');
-                if(map[i][j] == 0){
-                    K++;
-                }
-            }
+        for(int i = 0; i < 4; i+=2){
+            st = new StringTokenizer(br.readLine());
+            arr[i] = new Point(Long.parseLong(st.nextToken()), Long.parseLong(st.nextToken()));
+            arr[i+1] = new Point(Long.parseLong(st.nextToken()), Long.parseLong(st.nextToken()));
         }
 
-        backTracking(1);
+        System.out.println(checkCCW(arr));
+    }
+
+    public static int checkCCW(Point[] p) {
+		boolean is_result = false;
+		int result = 0;
+		int p123 = ccw(p[0], p[1], p[2]);
+		int p124 = ccw(p[0], p[1], p[3]);
+		int p341 = ccw(p[2], p[3], p[0]);
+		int p342 = ccw(p[2], p[3], p[1]);
+
+		boolean compare1 = Math.min(p[0].x, p[1].x) <= Math.max(p[2].x, p[3].x);
+		boolean compare2 = Math.min(p[2].x, p[3].x) <= Math.max(p[0].x, p[1].x);
+		boolean compare3 = Math.min(p[0].y, p[1].y) <= Math.max(p[2].y, p[3].y);
+		boolean compare4 = Math.min(p[2].y, p[3].y) <= Math.max(p[0].y, p[1].y);
+
+		if (p123 * p124 == 0 && p341 * p342 == 0) {
+			is_result = true;
+			if (compare1 && compare2 && compare3 && compare4)
+				result = 1;
+		}
+		if (p123 * p124 <= 0 && p341 * p342 <= 0) {
+			if (!is_result)
+				result = 1;
+		}
+		return result;
+	}
+
+    public static int ccw(Point p1, Point p2, Point p3){
+        long result = ((p1.x * p2.y) + (p2.x * p3.y) + (p3.x * p1.y)) - ((p1.y * p2.x) + (p2.y * p3.x) + (p3.y * p1.x));
+
+        // 반시계
+		if (result > 0)
+			return 1;
+        // 일직선
+		else if (result == 0)
+			return 0;
+        // 시계
+		else
+			return -1;
     }
 }

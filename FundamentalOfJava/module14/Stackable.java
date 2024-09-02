@@ -1,4 +1,4 @@
-public interface Stackable<E> {
+public interface Stackable<E> extends Iterable<E> {
     // acess: isEmpty
     // if my elements exist, or not : false, true
     public boolean isEmpty();
