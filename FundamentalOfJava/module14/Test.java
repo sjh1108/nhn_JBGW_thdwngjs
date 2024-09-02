@@ -1,14 +1,12 @@
 public class Test {
     public static void main(String[] args){
-        // ArrayList<Integer> list = new ArrayList<>();
-        ArrayStack<Integer> stack = new ArrayStack<>();
+        ArrayList<String> list = new ArrayList<>();
+        list.add("A");
+        list.add("B");
+        list.add("C");
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-
-        for(Integer i : stack){
-            System.out.println(i);
+        for(String s : list){
+            System.out.println(s);
         }
     }
 }

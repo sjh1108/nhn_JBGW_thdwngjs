@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ArrayList<E> implements List<E> {
@@ -14,15 +15,21 @@ public class ArrayList<E> implements List<E> {
     }
 
     public E get(int index){
-        return this.elements[index];
+        return this.elements[index-1];
     }
 
     public int size(){
         return this.index;
     }
 
-    public void remove(){
-        this.elements[--this.index] = null;
+    public void remove(int index){
+        // this.elements[--this.index] = null;
+
+        for(int i = index; i < this.index; i++){
+            this.elements[i] = this.elements[i+1];
+            this.elements[i+1] = null;
+        }
+        this.index--;
     }
 
     public boolean isEmpty(){
@@ -30,24 +37,13 @@ public class ArrayList<E> implements List<E> {
     }
 
     public void clear(){
+        Arrays.fill(elements, null);
         this.index = 0;
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>(){
-            private int currentIndex = 0;
-
-            @Override
-            public boolean hasNext() {
-                return currentIndex < index;
-            }
-
-            @Override
-            public E next() {
-                return elements[currentIndex++];
-            }
-        };
+        return Arrays.stream(elements, 0, index).iterator();
     }
 
 }
