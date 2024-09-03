@@ -1,8 +1,8 @@
 package Stack;
 import java.util.Iterator;
 
-import ArrayList;
-import List;
+import List.ArrayList;
+import List.List;
 
 public class ArrayListStack<E> implements Stackable<E>{
     List<E> list;
