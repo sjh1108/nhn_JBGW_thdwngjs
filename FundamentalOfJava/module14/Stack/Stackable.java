@@ -1,3 +1,4 @@
+package Stack;
 public interface Stackable<E> extends Iterable<E> {
     // acess: isEmpty
     // if my elements exist, or not : false, true

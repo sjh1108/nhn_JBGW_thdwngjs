@@ -1,3 +1,5 @@
+import Stack.Stackable;
+
 @SuppressWarnings("all")
 public class ArrayStack<E> implements Stackable<E> {
     private E[] elements;

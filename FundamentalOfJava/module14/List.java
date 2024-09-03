@@ -5,4 +5,5 @@ public interface List<E> extends Iterable<E> {
     void remove(int index);
     boolean isEmpty();
     void clear();
+
 }
