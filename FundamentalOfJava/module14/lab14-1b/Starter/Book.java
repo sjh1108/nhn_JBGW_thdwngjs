@@ -1,4 +1,4 @@
-public class Book implements Comparable<Book>{
+public class Book {
     private int no;
     private String title;
     private String subTitle;
@@ -48,10 +48,5 @@ public class Book implements Comparable<Book>{
     @Override
     public String toString() {
         return this.no + ", " + this.title + "," + this.author + ", " + this.getPrice();
-    }
-
-    @Override
-    public int compareTo(Book book){
-        return this.no - book.no;
     }
 }
