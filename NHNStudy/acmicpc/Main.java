@@ -8,53 +8,43 @@ public class Main{
 
     static int N, M, K;
 
+    static int[] save;
+
     public static void main(String[] args) throws IOException{
         N = Integer.parseInt(br.readLine());
 
-        long[] arr = new long[N];
+        int[] arr = new int[N];
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < N; i++){
-            arr[i] = Long.parseLong(st.nextToken());
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(arr);
+        int max = 0;
+        save = new int[10];
+        int fruitCount = 0, fruitCheck = 0, left = 0;
+        for(int i = 0; i < N; i++){
+            int fruit = arr[i];
+            save[fruit]++;
+            if(save[fruit] == 1){
+                fruitCheck++;
 
-        long[] result = {1000000000, 1000000000, 1000000000};
-        long min = result[0] + result[1] + result[2];
-        for(int i = 0; i < N-2; i++){
-            long start = arr[i];
+                if(fruitCheck > 2){
+                    max = Math.max(fruitCount, max);
 
-            int left = i+1, right = N-1;
-            while(left < right){
-                long l = arr[left];
-                long r = arr[right];
-                long sum = start + l + r;
-
-                if(Math.abs(sum) < Math.abs(min)){
-                    result[0] = start;
-                    result[1] = l;
-                    result[2] = r;
-
-                    min = 0;
-                    for(long t: result){
-                        min += t;
+                    while(fruitCheck > 2){
+                        if(save[arr[left++]]-- == 1){
+                            fruitCheck--;
+                        }
+                        fruitCount--;
                     }
                 }
-
-                if(sum > 0){
-                    right -= 1;
-                }
-                else if(sum < 0){
-                    left += 1;
-                } else{
-                    break;
-                }
             }
-        }
-        for(long l : result){
-            sb.append(l).append(' ');
+
+            fruitCount++;
         }
 
-        System.out.println(sb);
+        max = Math.max(max, fruitCount);
+
+        System.out.println(max);
     }
 }
