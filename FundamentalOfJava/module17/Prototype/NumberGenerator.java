@@ -5,6 +5,6 @@ public class NumberGenerator implements DataBean{
     
     @Override
     public DataBean clone() {
-        return this;
+        return new NumberGenerator();
     }
 }
