@@ -15,4 +15,12 @@ public class Random
         System.out.println(new RandomDataGenerator().nextInt(1, 100));
 
     }
+
+    public int utilRandomGenerator(){
+        return new java.util.Random().nextInt(100) + 1;
+    }
+
+    public int randomGenerator(){
+        return new RandomDataGenerator().nextInt(1, 101);
+    }
 }

@@ -22,4 +22,14 @@ public class NullCheck {
 
         sc.close();
     }
+
+    public boolean isNull1(String obj){
+        if(Objects.isNull(obj)){
+            return true;
+        } else return obj.isEmpty();
+    }
+
+    boolean isNull2(String str){
+        return StringUtils.isEmpty(str);
+    }
 }
